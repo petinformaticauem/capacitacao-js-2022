@@ -4,6 +4,16 @@ const input = document.querySelector('.input');
 
 let tasks = [];
 
+const getTasks = () => {
+  const tasksAdded = localStorage.getItem('tasks');
+
+  if (tasksAdded) {
+    tasks = JSON.parse(tasksAdded);
+  }
+
+  renderTasks(tasks);
+};
+
 const renderTasks = (tasks) => {
   list.innerHTML = '';
 
@@ -19,16 +29,6 @@ const renderTasks = (tasks) => {
 
     list.append(li);
   });
-};
-
-const getTasks = () => {
-  const tasksAdded = localStorage.getItem('tasks');
-
-  if (tasksAdded) {
-    tasks = JSON.parse(tasksAdded);
-  }
-
-  renderTasks(tasks);
 };
 
 getTasks();
